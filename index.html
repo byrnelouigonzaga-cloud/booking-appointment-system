@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Appointments</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="top">
+    <span class="logo">Appointments</span>
+  </header>
+
+  <main class="layout">
+
+    <!-- LEFT: create / edit form -->
+    <section class="panel">
+      <h1 id="form-title">New booking</h1>
+
+      <form id="booking-form" novalidate>
+        <input type="hidden" id="booking-id">
+
+        <label for="service">Service</label>
+        <select id="service"></select>
+
+        <label for="date">Date</label>
+        <input type="date" id="date">
+
+        <label for="time">Time</label>
+        <select id="time"></select>
+        <p class="hint" id="time-hint"></p>
+
+        <label for="name">Name</label>
+        <input type="text" id="name" autocomplete="name">
+
+        <label for="email">Email</label>
+        <input type="email" id="email" autocomplete="email">
+
+        <label for="phone">Phone</label>
+        <input type="tel" id="phone" autocomplete="tel">
+
+        <label for="notes">Notes (optional)</label>
+        <textarea id="notes" rows="3"></textarea>
+
+        <p class="message" id="message" role="alert"></p>
+
+        <div class="actions">
+          <button type="submit" id="save-btn" class="btn">Book appointment</button>
+          <button type="button" id="cancel-btn" class="btn-text" hidden>Cancel edit</button>
+        </div>
+      </form>
+    </section>
+
+    <!-- RIGHT: list of bookings -->
+    <section class="panel list-panel">
+      <div class="list-head">
+        <h2>Bookings</h2>
+        <input type="search" id="search" placeholder="Search by name or service" aria-label="Search bookings">
+      </div>
+
+      <ul id="booking-list" class="list"></ul>
+      <p id="empty" class="empty" hidden>No bookings yet. Add the first one on the left.</p>
+    </section>
+
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>

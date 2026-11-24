@@ -1,0 +1,236 @@
+/* ------------------------------------------------------------
+   Appointments - styles
+   Change the look by editing the variables below.
+------------------------------------------------------------ */
+
+:root {
+  --bg: #f7f6f3;          /* page background */
+  --surface: #ffffff;     /* panels */
+  --ink: #111111;         /* main text */
+  --muted: #787774;       /* secondary text */
+  --line: #eaeaea;        /* borders */
+  --danger: #9f2f2d;      /* delete / errors */
+  --danger-bg: #fdebec;
+  --blue: #1f6c9f;        /* service tag */
+  --blue-bg: #e1f3fe;
+  --yellow: #956400;      /* past tag */
+  --yellow-bg: #fbf3db;
+
+  --radius: 8px;
+  --font: "Helvetica Neue", "SF Pro Display", Arial, sans-serif;
+  --font-serif: "Newsreader", "Iowan Old Style", Georgia, serif;
+}
+
+/* ---------- Base ---------- */
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font);
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+h1, h2 {
+  font-family: var(--font-serif);
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  margin: 0 0 24px;
+}
+h1 { font-size: 32px; }
+h2 { font-size: 28px; margin: 0; }
+
+/* ---------- Header ---------- */
+
+.top {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 32px 24px 0;
+}
+.logo {
+  font-family: var(--font-serif);
+  font-size: 20px;
+  letter-spacing: -0.02em;
+}
+
+/* ---------- Layout ---------- */
+
+.layout {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 32px 24px 96px;
+  display: grid;
+  grid-template-columns: 360px 1fr;
+  gap: 32px;
+  align-items: start;
+}
+
+.panel {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 32px;
+}
+
+/* ---------- Form ---------- */
+
+label {
+  display: block;
+  margin: 16px 0 6px;
+  font-size: 14px;
+  color: var(--muted);
+}
+label:first-of-type { margin-top: 0; }
+
+input, select, textarea {
+  width: 100%;
+  font: inherit;
+  color: var(--ink);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 10px 12px;
+}
+textarea { resize: vertical; }
+
+input:focus-visible, select:focus-visible, textarea:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 2px;
+}
+
+.hint {
+  margin: 6px 0 0;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.message {
+  min-height: 1.6em;
+  margin: 16px 0 0;
+  font-size: 14px;
+  color: var(--danger);
+}
+.message.ok { color: #346538; }
+
+/* ---------- Buttons ---------- */
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-top: 8px;
+}
+
+.btn {
+  font: inherit;
+  background: var(--ink);
+  color: #fff;
+  border: 0;
+  border-radius: 6px;
+  padding: 11px 20px;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.1s;
+}
+.btn:hover { background: #333; }
+.btn:active { transform: scale(0.98); }
+
+.btn-text {
+  font: inherit;
+  font-size: 14px;
+  background: none;
+  border: 0;
+  padding: 4px 0;
+  color: var(--muted);
+  cursor: pointer;
+}
+.btn-text:hover { color: var(--ink); }
+.btn-text.danger { color: var(--danger); }
+
+/* ---------- Booking list ---------- */
+
+.list-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+.list-head input { max-width: 240px; }
+
+.list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.item {
+  display: grid;
+  grid-template-columns: 110px 1fr auto;
+  gap: 16px;
+  padding: 20px 0;
+  border-top: 1px solid var(--line);
+}
+.item:first-child { border-top: 0; padding-top: 0; }
+
+.when { font-size: 15px; }
+.when small {
+  display: block;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.who strong { font-weight: 500; }
+.who > span {
+  display: block;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.tag {
+  display: inline-block;
+  margin-right: 6px;
+  padding: 1px 10px;
+  border-radius: 9999px;
+  font-size: 12px;
+  background: var(--blue-bg);
+  color: var(--blue);
+}
+.tag.past { background: var(--yellow-bg); color: var(--yellow); }
+
+.item-actions {
+  display: flex;
+  gap: 16px;
+  align-items: start;
+}
+.item.past .when,
+.item.past .who { opacity: 0.55; }
+
+.empty {
+  color: var(--muted);
+  margin: 0;
+}
+
+/* ---------- Small screens ---------- */
+
+@media (max-width: 860px) {
+  .layout { grid-template-columns: 1fr; }
+  .panel { padding: 24px; }
+  .item { grid-template-columns: 1fr; gap: 8px; }
+  .list-head { flex-direction: column; align-items: stretch; }
+  .list-head input { max-width: none; }
+}
+
+/* ---------- Motion (only if the visitor allows it) ---------- */
+
+@media (prefers-reduced-motion: no-preference) {
+  .item { animation: rise 0.4s cubic-bezier(0.16, 1, 0.3, 1) both; }
+  @keyframes rise {
+    from { opacity: 0; transform: translateY(8px); }
+    to   { opacity: 1; transform: none; }
+  }
+}
